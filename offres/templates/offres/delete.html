@@ -1,0 +1,21 @@
+{% extends 'offres/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title">Confirm Deletion</h5>
+                    <p class="card-text">Are you sure you want to delete "{{ item }}"?</p>
+                    <form action="{% url 'delete_order' item.id %}" method="POST">
+                        {% csrf_token %}
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-danger" name="confirm">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

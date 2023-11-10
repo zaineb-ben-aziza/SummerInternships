@@ -1,0 +1,96 @@
+{% extends 'offres/main.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Search Bar and Filters -->
+            <div class="col-md-12">
+                <form method="GET">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" name="q" class="form-control" placeholder="Search orders...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ myFilter.form }}
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Customer Information -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Customer Information</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ customer.name }}</td> <!-- Replace with actual customer data -->
+                                    <td>{{ customer.email }}</td>
+                                    <td>{{ customer.phone }}</td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Counts -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Order Counts</h2>
+                        <p>Total Customers: 1</p> <!-- Replace with actual customer count -->
+                        <p>Total Orders: {{ orders|length }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Details -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Order Details</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Category</th>
+                                    <th>Status & Date Created</th> <!-- Combine Status and Date Created columns -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.product.name }}</td>
+                                    <td>{{ order.product.category }}</td>
+                                    <td>
+                                        {{ order.status }}<br>
+                                        {{ order.date_created }}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

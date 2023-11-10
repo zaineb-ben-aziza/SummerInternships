@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS styling */
+        .status-card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Customer Status Card -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card status-card">
+                <div class="card-body">
+                    <h5 class="card-title">Customer Status</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Total Customers</td>
+                                <td>{{ total_customers }}</td> <!-- Display the total number of customers -->
+                            </tr>
+                            <tr>
+                                <td>Delivered</td>
+                                <td>{{ delivered }}</td> <!-- Display the count of delivered orders -->
+                            </tr>
+                            <tr>
+                                <td>Pending</td>
+                                <td>{{ pending }}</td> <!-- Display the count of pending orders -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Status Card -->
+        <div class="col-md-6">
+            <div class="card status-card">
+                <div class="card-body">
+                    <h5 class="card-title">Product Status</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <!-- You can add rows here for different product statuses if needed -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS (optional) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

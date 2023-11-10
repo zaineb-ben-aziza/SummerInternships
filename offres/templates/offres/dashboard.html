@@ -1,0 +1,108 @@
+{% extends 'offres/main.html' %}
+
+{% block content %}
+
+{% include 'offres/status.html' %}
+{% include 'offres/status.html' with total_customers=total_customers delivered=delivered pending=pending %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <!-- Statistics Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Statistics</h1>
+                    <!-- Your statistics content goes here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Customer Content -->
+<div class="col-md-5">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Customer Content</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for customer in customers %}
+                        <tr>
+                            <td><a href="{% url 'customer' customer.id %}">View</a></td>
+                            <td>{{ customer.id }}</td>
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.phone }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Product Content -->
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Product Content</h2>
+                    <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_order' %}">creeat</a>
+                    <table class="table table-striped">
+                        <thead>
+                        
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>produit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for Order in orders %}
+                                <tr>
+                                    <td>{{ Order.date_created}}</td>
+                                    <td>{{ Order.status }}</td>
+                                    <td>{{ Order.product.name }}</td>
+                                    <td><a href="{% url 'update_order' Order.id %}">Update</a></td>
+                                    <td><a href="{% url 'delete_order' Order.id %}">Delete</a></td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        <!-- Your product data rows go here -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS (optional) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+<h1>Dashboard</h1>
+
+{% endblock %}
